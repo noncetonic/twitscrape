@@ -31,7 +31,7 @@ dump = File.open("twitterTrends_scrape#{time.day}-#{time.month}-#{time.year}.txt
 agent = Mechanize.new
 agent.user_agent_alias = "Windows Mozilla"
 
-# Let's go login!!!!
+# Let's go login!!!! Note: This is optional but typically yields better results
 user = 'username'
 pass = 'password'
 
@@ -80,15 +80,17 @@ pbar.finish
 words.sort!
 
 # Now let's split the array into single words and unique them
-#singleWords = Array.new
-#words.each do |word|
-#	singleWords.push("#{word.split(/\W+/)}")
-#end
+singleWords = Array.new
+words.each do |word|
+	singleWords.push(word.gsub(" ", "\n"))
+end
 
-#singleWords.sort!
+singleWords.sort!
+singleWords.uniq!
 
-# Save all sorted usernames into the dump file and print a closing message 
+# Save all sorted tweets, words, and trends into the dump file and print a closing message 
 dump.puts(words.join("\n"))
-#dump.puts(singleWords.join.gsub('"', ''))
+dump.puts(singleWords.join("\n"))
+dump.puts(trends.join("\n"))
 
 puts "\nFinished Scraping"
