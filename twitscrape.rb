@@ -32,8 +32,8 @@ agent = Mechanize.new
 agent.user_agent_alias = "Windows Mozilla"
 
 # Let's go login!!!!
-#user = 'username'
-#pass = 'password'
+user = 'username'
+pass = 'password'
 
 page = agent.get("https://mobile.twitter.com/session/new")
 login_form = page.forms[0]
@@ -56,9 +56,10 @@ wq = WorkQueue.new(50,25)
 words = Array.new # Create array to hold words so that we don't potentially deadlock the dump file during writes
 
 puts "[+] Now Scraping Please Wait"
-#pbar = ProgressBar.new("Scrape Process", 210) # Start our progress bar
+pbar = ProgressBar.new("Scrape Process", trends.length.to_i) # Start our progress bar
 
 # Start the pwnage
+progress = 1
 trends.each do |trend|
 	wq.enqueue_b {
     		page = agent.get("http://mobile.twitter.com/search/#{URI.escape(trend)}")
@@ -68,11 +69,12 @@ trends.each do |trend|
        			end
 		end
 	}
-	#pbar.set()
+	pbar.set(progress)
+	progress += 1
 	wq.join
 end
 # Finish off progress bar
-#pbar.finish
+pbar.finish
 
 # Sort all tweets in the words array
 words.sort!
