@@ -10,7 +10,6 @@ require "mechanize"
 require "work_queue"
 require "progressbar"
 require "json"
-require "uri"
 
 Mechanize::Util::CODE_DIC[:SJIS] = "UTF-8" # Ensuring we have UTF-8 Support
 
