@@ -46,7 +46,7 @@ page = agent.get("https://api.twitter.com/1/trends/1.json")
 trends = Array.new
 rawTrend = JSON.parse(page.body)[0]['trends']
 rawTrend.each do |index|
-	trends.push(index['name'])
+  trends.push(index['name'])
 end
 
 # Get our threadpool started with 50 threads with a max of 25 threads which can be waiting in the queue
@@ -60,18 +60,19 @@ pbar = ProgressBar.new("Scrape Process", trends.length.to_i) # Start our progres
 # Start the pwnage
 progress = 1
 trends.each do |trend|
-	wq.enqueue_b {
-    		page = agent.get("http://mobile.twitter.com/search/#{URI.escape(trend)}")
-		sigs.each do |sig|
-                        page.search(sig).each do |tweet|
-					words.push("#{tweet.inner_text}")
-       			end
-		end
-	}
-	pbar.set(progress)
-	progress += 1
-	wq.join
+  wq.enqueue_b {
+    page = agent.get("http://mobile.twitter.com/search/#{URI.escape(trend)}")
+    sigs.each do |sig|
+      page.search(sig).each do |tweet|
+        words.push("#{tweet.inner_text}")
+      end
+    end
+  }
+  pbar.set(progress)
+  progress += 1
+  wq.join
 end
+
 # Finish off progress bar
 pbar.finish
 
@@ -81,11 +82,12 @@ words.sort!
 # Now let's split the array into single words and unique them
 singleWords = Array.new
 words.each do |word|
-	singleWords.push(word.gsub(" ", "\n"))
+  word.split.each do |i|
+    singleWords << i
+  end
 end
 
-singleWords.sort!
-singleWords.uniq!
+singleWords.uniq!.sort!
 
 # Save all sorted tweets, words, and trends into the dump file and print a closing message 
 dump.puts(words.join("\n"))
