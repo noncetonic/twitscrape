@@ -2,7 +2,7 @@
 #Twitter Trending Topics Scraping Tool
 #Coded by Luis Santana
 #HackTalk Security Team
-#Shouts to Shardy, Rage, Node, Xires & Stacy, Pure_Hate, J0hnnyBrav0
+#Shouts to Shardy, Rage, Node, Xires & Stacy, Pure_Hate, J0hnnyBrav0, hostess
 
 # Let's get the required gems
 require "rubygems"
@@ -14,7 +14,7 @@ require "json"
 Mechanize::Util::CODE_DIC[:SJIS] = "UTF-8" # Ensuring we have UTF-8 Support
 
 puts "****************************************"
-puts "*             Twitscrape.rb            *"
+puts "*           Twitscrape.rb v1.0         *"
 puts "*               Coded By               *"
 puts "*             Luis Santana             *" 
 puts "*           HackTalk Security          *"
@@ -80,6 +80,7 @@ pbar.finish
 words.sort!
 
 # Now let's split the array into single words and unique them
+# W00t thanks Mandreko
 singleWords = Array.new
 words.each do |word|
   word.split.each do |i|
