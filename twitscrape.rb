@@ -34,11 +34,18 @@ agent.user_agent_alias = "Windows Mozilla"
 user = 'username'
 pass = 'password'
 
-page = agent.get("https://mobile.twitter.com/session/new")
-login_form = page.forms[0]
-login_form['username'] = user
-login_form['password'] = pass
-page = agent.submit(login_form)
+# Let's check if login will even be used.
+if user == 'username'
+  if pass == 'password'
+    puts "Login information not found, skipping login"
+  end
+else
+  page = agent.get("https://mobile.twitter.com/session/new")
+  login_form = page.forms[0]
+  login_form['username'] = user
+  login_form['password'] = pass
+  page = agent.submit(login_form)
+end
 
 # Let's grab the trends
 page = agent.get("https://api.twitter.com/1/trends/1.json")
@@ -97,5 +104,6 @@ singleWords.uniq!.sort!
 dump.puts(words.join("\n"))
 dump.puts(singleWords.join("\n"))
 dump.puts(trends.join("\n"))
+dump.close
 
 puts "Great success! check #{dump.path.to_s} for your wordlist"
