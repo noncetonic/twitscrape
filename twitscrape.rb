@@ -40,9 +40,9 @@ login_form['username'] = user
 login_form['password'] = pass
 page = agent.submit(login_form)
 
+# Let's grab the trends
 page = agent.get("https://api.twitter.com/1/trends/1.json")
 
-# Let's grab the trends
 trends = Array.new
 rawTrend = JSON.parse(page.body)[0]['trends']
 rawTrend.each do |index|
@@ -76,6 +76,9 @@ end
 # Finish off progress bar
 pbar.finish
 
+puts "\nFinished Scraping"
+puts "Sorting all our words"
+
 # Sort all tweets in the words array
 words.sort!
 
@@ -95,4 +98,4 @@ dump.puts(words.join("\n"))
 dump.puts(singleWords.join("\n"))
 dump.puts(trends.join("\n"))
 
-puts "\nFinished Scraping"
+puts "Great success! check #{dump.path.to_s} for your wordlist"
