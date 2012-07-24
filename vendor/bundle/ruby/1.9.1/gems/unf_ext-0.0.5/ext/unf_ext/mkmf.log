@@ -1,0 +1,34 @@
+have_library: checking for main() in -lstdc++... -------------------- yes
+
+"/usr/bin/clang -o conftest -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.3.0 -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1 -I. -I/usr/local/Cellar/readline/6.2.2/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/usr/local/Cellar/readline/6.2.2/include -Os -w -pipe -march=native -Qunused-arguments -fno-common conftest.c  -L. -L/usr/local/Cellar/ruby192/1.9.2-p290/lib -L. -L/usr/local/Cellar/readline/6.2.2/lib -L/usr/local/lib     -lruby.1.9.1-static  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main() {return 0;}
+/* end */
+
+"/usr/bin/clang -o conftest -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.3.0 -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1 -I. -I/usr/local/Cellar/readline/6.2.2/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/usr/local/Cellar/readline/6.2.2/include -Os -w -pipe -march=native -Qunused-arguments -fno-common conftest.c  -L. -L/usr/local/Cellar/ruby192/1.9.2-p290/lib -L. -L/usr/local/Cellar/readline/6.2.2/lib -L/usr/local/lib     -lruby.1.9.1-static -lstdc++  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: /*top*/
+4: int main() {return 0;}
+5: int t() { void ((*volatile p)()); p = (void ((*)()))main; return 0; }
+/* end */
+
+--------------------
+
+have_header: checking for ruby/encoding.h... -------------------- yes
+
+"/usr/bin/clang -E -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/x86_64-darwin11.3.0 -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1/ruby/backward -I/usr/local/Cellar/ruby192/1.9.2-p290/include/ruby-1.9.1 -I. -I/usr/local/Cellar/readline/6.2.2/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE  -I/usr/local/Cellar/readline/6.2.2/include -Os -w -pipe -march=native -Qunused-arguments -fno-common  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <ruby/encoding.h>
+/* end */
+
+--------------------
+

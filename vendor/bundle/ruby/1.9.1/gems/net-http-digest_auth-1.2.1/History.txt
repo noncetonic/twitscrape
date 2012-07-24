@@ -1,0 +1,29 @@
+=== 1.2.1
+
+* Bug fix
+  * Fixed -sess authentication.  This also fixes pull request #4 by joe81
+
+=== 1.2 / 2011-11-22
+
+* Minor enhancement
+  * Now thread safe.  Issue #2 by chrisochs.
+
+=== 1.1.1 / 2011-04-03
+
+* Bug fix
+  * Fix syntax error on ruby 1.8
+
+=== 1.1 / 2011-03-29
+
+* Minor enhancements
+  * Add support for SHA1, SHA2, SHA256, SHA384, SHA512, RMD160 algorithms
+* Bug fixes
+  * Support opaque per RFC 2617 3.2.1
+  * Support MD5-sess per RFC 2617 3.2.2.2
+  * Support unspecified qop for RFC 2069 compatibility per RFC 2617 3.2.2.1
+
+=== 1.0 / 2010-09-10
+
+* Major enhancements
+  * Birthday!
+
