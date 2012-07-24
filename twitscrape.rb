@@ -6,6 +6,7 @@
 
 # Let's get the required gems
 require "rubygems"
+require "bundler/setup"
 require "mechanize"
 require "work_queue"
 require "progressbar"
