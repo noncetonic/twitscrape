@@ -57,8 +57,8 @@ rawTrend.each do |index|
   trends.push(index['name'])
 end
 
-# Get our threadpool started with 50 threads with a max of 25 threads which can be waiting in the queue
-wq = WorkQueue.new(50,25)
+# Get our threadpool started with 256 threads with a max of 100 threads which can be waiting in the queue
+wq = WorkQueue.new(256,100)
 
 words = Array.new # Create array to hold words so that we don't potentially deadlock the dump file during writes
 
