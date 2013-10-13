@@ -5,8 +5,8 @@ TwitScrape is highly beneficial to password crackers who wish to generate non-sp
 
 TwitScrape depends on the following gems:
 
-Json
-Progress_bar
-Work_queue
-Mechanize
+* Json
+* Progress_bar
+* Work_queue
+* Mechanize
 
